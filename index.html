@@ -41,6 +41,20 @@
     section {
       margin-top: 2rem;
     }
+    .about {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+    .about img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--text);
+    }
     .projects {
       display: flex;
       gap: 1rem;
@@ -71,6 +85,13 @@
     </div>
   </header>
 
+  <!-- About Me Section -->
+  <section class="about">
+    <img src="your-photo.jpg" alt="My photo" />
+    <p id="about-text">Hi! I'm [Your Name], a developer who loves building projects and learning new things.</p>
+  </section>
+
+  <!-- Projects Section -->
   <section>
     <h2 id="projects-title">Projects</h2>
     <div class="projects">
@@ -82,27 +103,30 @@
   </section>
 
   <script>
-
+    // Dark/Light mode toggle
     function toggleTheme() {
       const body = document.body;
       body.dataset.theme = body.dataset.theme === "light" ? "dark" : "light";
     }
 
-    
+    // Simple language translations
     const translations = {
       en: {
         title: "Welcome",
         projects: "Projects",
+        about: "Hi! I am André, a young developer who is always looking forward to expand his skill set with any challenge that arises. Currently, I'm studying Python more than any other language, but I have past experience with PHP and SQL."
       },
       pt: {
         title: "Bem-vindo",
         projects: "Projetos",
+        about: "Oi! Eu sou o André, um desenvolvedor novo que está sempre a procura de desenvolver suas habilidades com qualquer desafio que apareça. Atualmente, estou estudante Python mais que qualquer outra linguagem de programação, mas tenho experiências passadas com PHP e SQL."
       },
     };
 
     function setLang(lang) {
       document.getElementById("title").textContent = translations[lang].title;
       document.getElementById("projects-title").textContent = translations[lang].projects;
+      document.getElementById("about-text").textContent = translations[lang].about;
     }
   </script>
 </body>
