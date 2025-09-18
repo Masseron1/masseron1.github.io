@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My GitHub Page</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+    }
+    [data-theme="dark"] {
+      --bg: #111111;
+      --text: #ffffff;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      padding: 1rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+    button {
+      padding: 0.3rem 0.6rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: var(--text);
+      color: var(--bg);
+    }
+    section {
+      margin-top: 2rem;
+    }
+    .projects {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+    }
+    .project {
+      flex: 0 0 250px;
+      height: 150px;
+      background: var(--text);
+      color: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      scroll-snap-align: start;
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <header>
+    <h1 id="title">Welcome</h1>
+    <div class="buttons">
+      <button onclick="toggleTheme()">🌙/☀️</button>
+      <button onclick="setLang('en')">EN</button>
+      <button onclick="setLang('pt')">PT</button>
+    </div>
+  </header>
+
+  <section>
+    <h2 id="projects-title">Projects</h2>
+    <div class="projects">
+      <div class="project">Project 1</div>
+      <div class="project">Project 2</div>
+      <div class="project">Project 3</div>
+      <div class="project">Project 4</div>
+    </div>
+  </section>
+
+  <script>
+    // Dark/Light mode toggle
+    function toggleTheme() {
+      const body = document.body;
+      body.dataset.theme = body.dataset.theme === "light" ? "dark" : "light";
+    }
+
+    // Simple language translations
+    const translations = {
+      en: {
+        title: "Welcome",
+        projects: "Projects",
+      },
+      pt: {
+        title: "Bem-vindo",
+        projects: "Projetos",
+      },
+    };
+
+    function setLang(lang) {
+      document.getElementById("title").textContent = translations[lang].title;
+      document.getElementById("projects-title").textContent = translations[lang].projects;
+    }
+  </script>
+</body>
+</html>
