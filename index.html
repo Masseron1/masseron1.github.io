@@ -173,8 +173,8 @@
       <div class="about-photo">
         <img src="andre.jpeg" alt="André" />
         <div class="contact-info">
-          <span>Email: andremasseroni1@email.com</span>
-          <span>Phone: +55 51 99735-6972</span>
+          <span>Email: example@email.com</span>
+          <span id="phone-text">Phone: +55 11 99999-9999</span>
         </div>
       </div>
       <div class="about-text">
@@ -211,6 +211,7 @@
     function toggleTheme() {
       const body = document.body;
       body.dataset.theme = body.dataset.theme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", body.dataset.theme);
     }
 
     // Simple language translations
@@ -218,20 +219,34 @@
       en: {
         title: "Welcome",
         projects: "Projects",
-        about: "Hi! I am André, a young developer who is always looking forward to expand his skill set with any challenge that arises. Currently, I'm studying Python more than any other language, but I have past experience with PHP and SQL."
+        about: "Hi! I am André, a young developer who is always looking forward to expand his skill set with any challenge that arises. Currently, I'm studying Python more than any other language, but I have past experience with PHP and SQL.",
+        phone: "Phone"
       },
       pt: {
         title: "Bem-vindo",
         projects: "Projetos",
-        about: "Oi! Eu sou o André, um desenvolvedor novo que está sempre a procura de desenvolver suas habilidades com qualquer desafio que apareça. Atualmente, estou estudando Python mais que qualquer outra linguagem de programação, mas tenho experiências passadas com PHP e SQL."
+        about: "Oi! Eu sou o André, um desenvolvedor novo que está sempre a procura de desenvolver suas habilidades com qualquer desafio que apareça. Atualmente, estou estudando Python mais que qualquer outra linguagem de programação, mas tenho experiências passadas com PHP e SQL.",
+        phone: "Telefone"
       },
     };
 
+    // Change language
     function setLang(lang) {
       document.getElementById("title").textContent = translations[lang].title;
       document.getElementById("projects-title").textContent = translations[lang].projects;
       document.getElementById("about-text").textContent = translations[lang].about;
+      document.getElementById("phone-text").textContent = translations[lang].phone + ": +55 11 99999-9999";
+      localStorage.setItem("lang", lang);
     }
+
+    // Load saved preferences
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) document.body.dataset.theme = savedTheme;
+
+      const savedLang = localStorage.getItem("lang") || "en";
+      setLang(savedLang);
+    });
   </script>
 </body>
 </html>
