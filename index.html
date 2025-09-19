@@ -171,6 +171,32 @@
       background: var(--text);
       color: var(--bg);
     }
+
+    /* Social Buttons Section */
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 3rem 0 2rem 0;
+    }
+
+    .social-buttons button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: var(--text);
+      color: var(--bg);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .social-buttons button:hover {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--text);
+    }
+
   </style>
 </head>
 <body data-theme="light">
@@ -222,6 +248,12 @@
         <button onclick="window.open('https://github.com/andre/project4', '_blank')">View</button>
       </div>
     </div>
+  </section>
+
+  <!-- Social Buttons Section -->
+  <section class="social-buttons">
+    <button onclick="window.open('https://github.com/andre', '_blank')">GitHub</button>
+    <button onclick="window.open('https://www.linkedin.com/in/andre', '_blank')">LinkedIn</button>
   </section>
 
   <script>
